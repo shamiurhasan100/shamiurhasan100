@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shamiur Hasan | SEO Specialist & AI/ML Engineering</title>
     
-    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <!-- Google Fonts: Inter, Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome 6 CDN for Icons & Social Logos -->
+    <!-- Font Awesome 6 CDN for Official Icons & Social Logos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Tailwind CSS CDN -->
@@ -23,14 +23,19 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        primary: {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
+                        obsidian: {
+                            950: '#090D0B',
+                            900: '#111815',
+                            850: '#16201C',
+                            800: '#1E2B26',
+                        },
+                        ivory: {
+                            50: '#FAF9F6',
+                            100: '#F3F1EC',
+                            200: '#E6E2D8',
                         }
                     }
                 }
@@ -38,47 +43,56 @@
         }
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-indigo-600 selection:text-white">
+<body class="bg-ivory-50 text-stone-800 dark:bg-obsidian-950 dark:text-stone-100 transition-colors duration-300 antialiased selection:bg-emerald-600 selection:text-white">
+
+    <!-- Subtle Architectural Grid Overlay -->
+    <div class="fixed inset-0 -z-20 pointer-events-none opacity-[0.035] dark:opacity-[0.05]" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 28px 28px;"></div>
 
     <!-- Toast Notification Banner (Replaces alert()) -->
     <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="bg-slate-900 dark:bg-slate-800 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3">
+        <div class="bg-obsidian-900 text-stone-100 px-5 py-3.5 rounded-xl shadow-2xl border border-emerald-500/30 flex items-center gap-3">
             <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
             <span id="toast-message" class="text-sm font-medium">Action completed successfully!</span>
         </div>
     </div>
 
     <!-- Sticky Top Navigation Bar -->
-    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/85 dark:bg-slate-950/85 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-ivory-50/85 dark:bg-obsidian-950/85 border-b border-ivory-200 dark:border-obsidian-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Brand / Logo -->
-                <a href="#home" class="flex items-center gap-2.5 group">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white font-display font-bold text-base flex items-center justify-center shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-900 text-white font-display font-bold text-sm tracking-wider flex items-center justify-center shadow-md shadow-emerald-600/20 border border-emerald-400/20 group-hover:scale-105 transition-transform">
                         SH
                     </div>
-                    <span class="font-display font-bold text-lg tracking-tight text-slate-900 dark:text-white">
-                        Shamiur Hasan<span class="text-indigo-600 dark:text-indigo-400">.</span>
-                    </span>
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-base tracking-tight text-stone-900 dark:text-white leading-none">
+                            Shamiur Hasan<span class="text-amber-500">.</span>
+                        </span>
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mt-0.5">
+                            Portfolio
+                        </span>
+                    </div>
                 </a>
 
                 <!-- Desktop Navigation Tabs -->
                 <nav class="hidden md:flex items-center gap-1" aria-label="Main Navigation">
-                    <a href="#home" data-nav="home" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 transition-colors">Home</a>
-                    <a href="#about" data-nav="about" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">About</a>
-                    <a href="#education" data-nav="education" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Education</a>
-                    <a href="#skills" data-nav="skills" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Skills</a>
-                    <a href="#projects" data-nav="projects" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Projects</a>
-                    <a href="#contact" data-nav="contact" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors">Contact</a>
+                    <a href="#home" data-nav="home" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 transition-colors">Home</a>
+                    <a href="#about" data-nav="about" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-ivory-100 dark:hover:bg-obsidian-900 transition-colors">About</a>
+                    <a href="#education" data-nav="education" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-ivory-100 dark:hover:bg-obsidian-900 transition-colors">Education</a>
+                    <a href="#skills" data-nav="skills" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-ivory-100 dark:hover:bg-obsidian-900 transition-colors">Skills</a>
+                    <a href="#projects" data-nav="projects" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-ivory-100 dark:hover:bg-obsidian-900 transition-colors">Projects</a>
+                    <a href="#contact" data-nav="contact" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-ivory-100 dark:hover:bg-obsidian-900 transition-colors">Contact</a>
                 </nav>
 
                 <!-- Theme Toggle & Mobile Menu Button -->
                 <div class="flex items-center gap-2">
-                    <button id="theme-toggle" type="button" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
-                        <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                    <button id="theme-toggle" type="button" aria-label="Toggle Executive Theme" title="Switch Theme (Obsidian Dark / Ivory Light)" class="px-3 py-2 rounded-xl text-xs font-medium text-stone-700 dark:text-stone-300 bg-ivory-100 dark:bg-obsidian-900 hover:bg-ivory-200 dark:hover:bg-obsidian-800 border border-ivory-200 dark:border-obsidian-800 transition-colors flex items-center gap-2">
+                        <i id="theme-icon" class="fa-solid fa-sun text-amber-500"></i>
+                        <span id="theme-label" class="hidden sm:inline">Ivory</span>
                     </button>
 
-                    <button id="mobile-menu-btn" type="button" aria-label="Open Navigation Menu" class="md:hidden p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+                    <button id="mobile-menu-btn" type="button" aria-label="Open Navigation Menu" class="md:hidden p-2.5 rounded-xl text-stone-700 dark:text-stone-300 hover:bg-ivory-100 dark:hover:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 transition-colors">
                         <i id="mobile-menu-icon" class="fa-solid fa-bars text-base"></i>
                     </button>
                 </div>
@@ -86,133 +100,142 @@
         </div>
 
         <!-- Mobile Navigation Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 pt-2 pb-4 space-y-1 shadow-lg">
-            <a href="#home" data-nav="home" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60">Home</a>
-            <a href="#about" data-nav="about" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900">About</a>
-            <a href="#education" data-nav="education" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900">Education</a>
-            <a href="#skills" data-nav="skills" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900">Skills</a>
-            <a href="#projects" data-nav="projects" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900">Projects</a>
-            <a href="#contact" data-nav="contact" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-ivory-200 dark:border-obsidian-800 bg-ivory-50 dark:bg-obsidian-950 px-4 pt-2 pb-4 space-y-1 shadow-xl">
+            <a href="#home" data-nav="home" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-500/10">Home</a>
+            <a href="#about" data-nav="about" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:bg-ivory-100 dark:hover:bg-obsidian-900">About</a>
+            <a href="#education" data-nav="education" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:bg-ivory-100 dark:hover:bg-obsidian-900">Education</a>
+            <a href="#skills" data-nav="skills" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:bg-ivory-100 dark:hover:bg-obsidian-900">Skills</a>
+            <a href="#projects" data-nav="projects" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:bg-ivory-100 dark:hover:bg-obsidian-900">Projects</a>
+            <a href="#contact" data-nav="contact" class="mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:bg-ivory-100 dark:hover:bg-obsidian-900">Contact</a>
         </div>
     </header>
 
     <main>
         <!-- 1. HERO SECTION -->
-        <section id="home" class="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden scroll-mt-16">
-            <!-- Subtle Background Accents -->
+        <section id="home" class="relative pt-14 pb-20 md:pt-24 md:pb-28 overflow-hidden scroll-mt-16">
+            <!-- Executive Ambient Lighting -->
             <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-                <div class="absolute -top-24 right-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl"></div>
-                <div class="absolute top-32 -left-24 w-80 h-80 bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-3xl"></div>
+                <div class="absolute -top-24 right-1/4 w-[28rem] h-[28rem] bg-emerald-500/10 dark:bg-emerald-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute top-40 -left-24 w-96 h-96 bg-amber-500/10 dark:bg-amber-500/10 rounded-full blur-3xl"></div>
             </div>
 
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <!-- Hero Left Content -->
                     <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200/80 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 text-xs font-semibold tracking-wide">
+                        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 dark:bg-obsidian-900 border border-emerald-600/25 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs font-semibold tracking-wide">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            Available for Collaborations & Opportunities
+                            Open for AI/ML Engineering & SEO Consulting
                         </div>
 
                         <div class="space-y-3">
-                            <p class="text-sm sm:text-base font-medium text-slate-500 dark:text-slate-400">Hello, I'm</p>
-                            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                            <p class="font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-amber-700 dark:text-amber-400 font-semibold">
+                                Welcome to My Official Portfolio
+                            </p>
+                            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-stone-900 dark:text-white leading-tight">
                                 Shamiur Hasan
                             </h1>
-                            <h2 class="text-lg sm:text-xl font-semibold text-indigo-600 dark:text-indigo-400">
-                                SEO Specialist <span class="text-slate-300 dark:text-slate-700 mx-1.5">|</span> AI/ML Engineering
+                            <h2 class="text-lg sm:text-xl font-semibold text-emerald-700 dark:text-emerald-400 flex flex-wrap items-center justify-center lg:justify-start gap-2">
+                                <span>SEO Specialist</span>
+                                <span class="text-amber-500 font-bold">|</span>
+                                <span>AI/ML Engineering</span>
                             </h2>
                         </div>
 
-                        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                            Computer Science & Engineering undergraduate at <span class="font-semibold text-slate-800 dark:text-slate-100">University of Information Technology & Sciences (UITS)</span>. Passionate about intelligent systems, search engine growth strategies, and full-stack software engineering.
+                        <p class="text-base sm:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Computer Science & Engineering undergraduate at the <span class="font-semibold text-stone-900 dark:text-white">University of Information Technology & Sciences (UITS)</span>. Focused on intelligent machine learning workflows, technical search engine optimization, and scalable software architecture.
                         </p>
 
-                        <!-- Action Buttons -->
+                        <!-- Primary Call-to-Action Buttons -->
                         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
-                            <a href="#projects" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-lg shadow-indigo-600/25 transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-folder-open"></i>
-                                View Projects
+                            <a href="#projects" class="px-6 py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-sm shadow-lg shadow-emerald-900/25 transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group"></i>
+                                Explore Projects
                             </a>
-                            <a href="#contact" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold text-sm border border-slate-200 dark:border-slate-700 shadow-sm transition-all flex items-center gap-2">
-                                <i class="fa-solid fa-paper-plane text-indigo-600 dark:text-indigo-400"></i>
+                            <a href="#contact" class="px-6 py-3.5 rounded-xl bg-white dark:bg-obsidian-900 hover:bg-ivory-100 dark:hover:bg-obsidian-850 text-stone-900 dark:text-stone-100 font-semibold text-sm border border-ivory-200 dark:border-obsidian-800 shadow-sm transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-envelope-open-text text-amber-600 dark:text-amber-400"></i>
                                 Contact Me
                             </a>
                         </div>
 
-                        <!-- Quick Social Icon Strip -->
+                        <!-- Quick Social Icon Bar -->
                         <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-                            <a href="https://www.linkedin.com/in/shamiurhasan100/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-800 transition-all shadow-sm">
+                            <a href="https://www.linkedin.com/in/shamiurhasan100/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="w-10 h-10 rounded-xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 flex items-center justify-center text-stone-600 dark:text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-xs">
                                 <i class="fa-brands fa-linkedin-in"></i>
                             </a>
-                            <a href="https://github.com/shamiurhasan100" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-600 transition-all shadow-sm">
+                            <a href="https://github.com/shamiurhasan100" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" class="w-10 h-10 rounded-xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 flex items-center justify-center text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white hover:border-emerald-500/50 transition-all shadow-xs">
                                 <i class="fa-brands fa-github"></i>
                             </a>
-                            <a href="https://www.facebook.com/shamiurhasan100?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-800 transition-all shadow-sm">
+                            <a href="https://www.facebook.com/shamiurhasan100?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook" class="w-10 h-10 rounded-xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 flex items-center justify-center text-stone-600 dark:text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-xs">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </a>
-                            <a href="https://wa.me/qr/MRRL7UCTYDXNE1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-300 dark:hover:border-emerald-800 transition-all shadow-sm">
+                            <a href="https://wa.me/qr/MRRL7UCTYDXNE1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp" class="w-10 h-10 rounded-xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 flex items-center justify-center text-stone-600 dark:text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-xs">
                                 <i class="fa-brands fa-whatsapp"></i>
                             </a>
-                            <a href="http://t.me/shamiurhasan100" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 hover:border-sky-300 dark:hover:border-sky-800 transition-all shadow-sm">
+                            <a href="http://t.me/shamiurhasan100" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram" class="w-10 h-10 rounded-xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 flex items-center justify-center text-stone-600 dark:text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-xs">
                                 <i class="fa-brands fa-telegram"></i>
                             </a>
-                            <a href="https://www.youtube.com/@shamiurhasan100" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 hover:border-red-300 dark:hover:border-red-800 transition-all shadow-sm">
+                            <a href="https://www.youtube.com/@shamiurhasan100" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube" class="w-10 h-10 rounded-xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 flex items-center justify-center text-stone-600 dark:text-stone-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/50 transition-all shadow-xs">
                                 <i class="fa-brands fa-youtube"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Hero Right Profile Card -->
+                    <!-- Hero Right Executive Portrait Card (Permanently Locked Image) -->
                     <div class="lg:col-span-5 flex justify-center">
-                        <div class="w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none relative">
-                            <div class="flex flex-col items-center text-center">
-                                <!-- Profile Photo Container -->
-                                <div class="relative group mb-5">
-                                    <div class="w-40 h-40 rounded-2xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-500 p-1 shadow-lg shadow-indigo-500/25">
-                                        <div class="w-full h-full rounded-xl overflow-hidden bg-slate-900 relative">
+                        <div class="w-full max-w-sm bg-white dark:bg-obsidian-900 rounded-3xl p-6 sm:p-7 border border-ivory-200 dark:border-obsidian-800 shadow-2xl shadow-stone-900/5 dark:shadow-black/40 relative overflow-hidden">
+                            <!-- Top Gold & Emerald Accent Bar -->
+                            <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emerald-600 via-amber-500 to-emerald-600"></div>
+
+                            <div class="flex flex-col items-center text-center pt-2">
+                                <!-- Locked Profile Photo Frame (No Change/Upload Controls) -->
+                                <div class="relative mb-5 select-none">
+                                    <div class="w-44 h-48 rounded-2xl bg-gradient-to-b from-emerald-500/40 via-amber-500/30 to-emerald-700/40 p-[3px] shadow-xl">
+                                        <div class="w-full h-full rounded-[13px] overflow-hidden bg-obsidian-950 relative">
                                             <img 
-                                                id="profile-photo-img"
-                                                src="1769702820023~2_2.jpg" 
-                                                alt="Shamiur Hasan - SEO Specialist & AI/ML Engineer" 
-                                                class="w-full h-full object-cover object-top"
-                                                onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='1769702820023~2.jpg';}else{this.onerror=null;this.src='https://placehold.co/300x300/1e293b/ffffff?text=Shamiur+Hasan';}"
+                                                src="profile.jpg"
+                                                draggable="false"
+                                                oncontextmenu="return false;"
+                                                class="w-full h-full object-cover object-top pointer-events-none select-none"
+                                                onerror="if(!this.dataset.step){this.dataset.step='1';this.src='1769702820023~2_2.jpg';}else if(this.dataset.step==='1'){this.dataset.step='2';this.src='1769702820023~2.jpg';}else{this.onerror=null;this.src='https://placehold.co/360x400/111815/10b981?text=Shamiur+Hasan';}"
                                             />
+                                            <!-- Transparent Protective Overlay -->
+                                            <div class="absolute inset-0 bg-transparent" oncontextmenu="return false;"></div>
                                         </div>
                                     </div>
-                                    <!-- Instant Local Preview / Replace Photo Button -->
-                                    <label for="profile-photo-upload" title="Preview your photo in browser" class="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-md flex items-center justify-center cursor-pointer transition-transform hover:scale-105 border-2 border-white dark:border-slate-900">
-                                        <i class="fa-solid fa-camera text-xs"></i>
-                                        <input type="file" id="profile-photo-upload" accept="image/*" class="hidden" />
-                                    </label>
+                                    <!-- Verified Executive Badge -->
+                                    <div class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-obsidian-950 dark:bg-emerald-950 text-emerald-400 border border-emerald-500/40 text-[10px] font-mono uppercase tracking-wider shadow-md whitespace-nowrap flex items-center gap-1.5">
+                                        <i class="fa-solid fa-shield-check text-amber-400"></i>
+                                        Official Profile
+                                    </div>
                                 </div>
 
-                                <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white">Shamiur Hasan</h3>
-                                <p class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mt-1">SEO Specialist & AI/ML Engineer</p>
+                                <h3 class="font-display text-xl font-bold text-stone-900 dark:text-white mt-2">Shamiur Hasan</h3>
+                                <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mt-1">SEO Specialist | AI/ML Engineering</p>
 
-                                <div class="w-full h-px bg-slate-100 dark:bg-slate-800 my-5"></div>
+                                <div class="w-full h-px bg-ivory-200 dark:bg-obsidian-800 my-5"></div>
 
                                 <div class="w-full space-y-3 text-left text-sm">
-                                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-                                        <span class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                                    <div class="flex items-center gap-3 text-stone-700 dark:text-stone-300">
+                                        <span class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
                                             <i class="fa-solid fa-graduation-cap text-xs"></i>
                                         </span>
-                                        <span class="truncate">B.Sc. in CSE, UITS</span>
+                                        <span class="truncate font-medium">B.Sc. in CSE — UITS</span>
                                     </div>
-                                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-                                        <span class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                                    <div class="flex items-center gap-3 text-stone-700 dark:text-stone-300">
+                                        <span class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
                                             <i class="fa-solid fa-phone text-xs"></i>
                                         </span>
-                                        <a href="tel:+8801773317154" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">01773317154</a>
+                                        <a href="tel:+8801773317154" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-mono text-xs sm:text-sm">01773317154</a>
                                     </div>
-                                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-                                        <span class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                                    <div class="flex items-center gap-3 text-stone-700 dark:text-stone-300">
+                                        <span class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
                                             <i class="fa-solid fa-envelope text-xs"></i>
                                         </span>
-                                        <a href="mailto:shamiurhasan100@gmail.com" class="truncate hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">shamiurhasan100@gmail.com</a>
+                                        <a href="mailto:shamiurhasan100@gmail.com" class="truncate hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-xs sm:text-sm">shamiurhasan100@gmail.com</a>
                                     </div>
-                                    <div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
-                                        <span class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                                    <div class="flex items-center gap-3 text-stone-700 dark:text-stone-300">
+                                        <span class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
                                             <i class="fa-solid fa-location-dot text-xs"></i>
                                         </span>
                                         <span>Dhaka, Bangladesh</span>
@@ -226,57 +249,57 @@
         </section>
 
         <!-- 2. ABOUT SECTION -->
-        <section id="about" class="py-20 bg-white dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800/70 scroll-mt-16">
+        <section id="about" class="py-20 bg-ivory-100/70 dark:bg-obsidian-900/60 border-y border-ivory-200 dark:border-obsidian-800 scroll-mt-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mb-12">
-                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">About Me</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">
-                        Bridging Intelligent Systems & Digital Visibility
+                    <span class="font-mono text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">01 // Profile Overview</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-2">
+                        About Me
                     </h2>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-7 space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                    <div class="lg:col-span-7 space-y-4 text-stone-600 dark:text-stone-300 leading-relaxed text-base">
                         <p>
-                            I am <strong class="text-slate-900 dark:text-white font-semibold">Shamiur Hasan</strong>, a dedicated Computer Science & Engineering undergraduate at the <strong class="text-slate-900 dark:text-white font-semibold">University of Information Technology & Sciences (UITS)</strong>. My academic and professional journey centers on <span class="text-indigo-600 dark:text-indigo-400 font-medium">AI/ML Engineering</span> and <span class="text-indigo-600 dark:text-indigo-400 font-medium">Search Engine Optimization (SEO)</span>.
+                            I am <strong class="text-stone-900 dark:text-white font-semibold">Shamiur Hasan</strong>, a Computer Science & Engineering student at the <strong class="text-stone-900 dark:text-white font-semibold">University of Information Technology & Sciences (UITS)</strong>, specializing in <span class="text-emerald-700 dark:text-emerald-400 font-semibold">AI/ML Engineering</span> and <span class="text-emerald-700 dark:text-emerald-400 font-semibold">Search Engine Optimization (SEO)</span>.
                         </p>
                         <p>
-                            With hands-on experience in software engineering, database architecture, compiler construction, and embedded hardware systems, I enjoy transforming complex technical concepts into clean, practical, and user-centric solutions. Alongside software development, I specialize in technical and strategic SEO to help digital platforms maximize organic reach and search performance.
+                            My academic foundation spans software engineering, relational database systems, compiler design, and microcontroller automation. By combining analytical engineering discipline with data-driven SEO strategies, I build solutions that are both technically robust and highly discoverable online.
                         </p>
                     </div>
 
-                    <!-- Quick Summary Cards -->
+                    <!-- Executive Highlights Grid -->
                     <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-                            <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-3">
+                        <div class="p-5 rounded-2xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mb-3">
                                 <i class="fa-solid fa-university"></i>
                             </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">University</p>
-                            <p class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">UITS (CSE Dept.)</p>
+                            <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">Institution</p>
+                            <p class="text-sm font-bold text-stone-900 dark:text-white mt-0.5">UITS (B.Sc. in CSE)</p>
                         </div>
 
-                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-                            <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3">
+                        <div class="p-5 rounded-2xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3">
                                 <i class="fa-solid fa-brain"></i>
                             </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Primary Focus</p>
-                            <p class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">AI/ML & SEO Strategy</p>
+                            <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">Core Domain</p>
+                            <p class="text-sm font-bold text-stone-900 dark:text-white mt-0.5">AI/ML & Technical SEO</p>
                         </div>
 
-                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-3">
+                        <div class="p-5 rounded-2xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mb-3">
                                 <i class="fa-solid fa-calendar-check"></i>
                             </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Graduation</p>
-                            <p class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">2027 (Expected)</p>
+                            <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">Expected Graduation</p>
+                            <p class="text-sm font-bold text-stone-900 dark:text-white mt-0.5">2027</p>
                         </div>
 
-                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-                            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-code-branch"></i>
+                        <div class="p-5 rounded-2xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3">
+                                <i class="fa-solid fa-microchip"></i>
                             </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Academic Works</p>
-                            <p class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">4+ Core Projects</p>
+                            <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">Completed Systems</p>
+                            <p class="text-sm font-bold text-stone-900 dark:text-white mt-0.5">4 Core CSE Projects</p>
                         </div>
                     </div>
                 </div>
@@ -287,95 +310,94 @@
         <section id="education" class="py-20 scroll-mt-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mb-12">
-                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Academic Background</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">
+                    <span class="font-mono text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">02 // Academic Credentials</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-2">
                         Education Qualifications
                     </h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2 text-base">
-                        My formal academic credentials and institutional milestones.
+                    <p class="text-stone-600 dark:text-stone-400 mt-2 text-base">
+                        Complete academic record from secondary education through undergraduate engineering studies.
                     </p>
                 </div>
 
-                <!-- Timeline / Cards Container -->
-                <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-indigo-500 before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
+                <!-- Vertical Timeline -->
+                <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-emerald-500 before:via-amber-500/50 before:to-transparent">
                     
                     <!-- B.Sc. Card -->
                     <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-indigo-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-ivory-50 dark:border-obsidian-950 bg-emerald-700 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                             <i class="fa-solid fa-graduation-cap text-xs"></i>
                         </div>
-                        <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-obsidian-900 p-6 rounded-2xl border border-ivory-200 dark:border-obsidian-800 shadow-sm hover:border-emerald-500/40 transition-all">
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
                                     Passing Year: 2027 (Expected)
                                 </span>
-                                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                                    CGPA: Ungraduated (Out of 4.00)
+                                <span class="text-xs font-semibold text-amber-700 dark:text-amber-400">
+                                    CGPA: Ungraduated (Out of 4.00 scales)
                                 </span>
                             </div>
-                            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">
+                            <h3 class="font-display text-lg font-bold text-stone-900 dark:text-white">
                                 Bachelor of Science (B.Sc)
                             </h3>
-                            <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-1">
+                            <p class="text-sm font-semibold text-emerald-700 dark:text-emerald-400 mt-1">
                                 University of Information Technology & Sciences
                             </p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-300 space-y-1">
-                                <p><span class="font-medium text-slate-800 dark:text-slate-200">Department:</span> Computer Science & Engineering</p>
-                                <p><span class="font-medium text-slate-800 dark:text-slate-200">Scale:</span> 4.00 Scale (Currently Pursuing)</p>
+                            <div class="mt-3 pt-3 border-t border-ivory-200 dark:border-obsidian-800 text-sm text-stone-600 dark:text-stone-300 space-y-1">
+                                <p><span class="font-semibold text-stone-800 dark:text-stone-200">Department:</span> Computer Science & Engineering</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- H.S.C Card -->
                     <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-blue-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-ivory-50 dark:border-obsidian-950 bg-amber-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                             <i class="fa-solid fa-building-columns text-xs"></i>
                         </div>
-                        <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-obsidian-900 p-6 rounded-2xl border border-ivory-200 dark:border-obsidian-800 shadow-sm hover:border-amber-500/40 transition-all">
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-400">
                                     Passing Year: 2023
                                 </span>
-                                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                                    GPA: 4.58 / 5.00
+                                <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                                    GPA: 4.58 (out of 5.00 scales)
                                 </span>
                             </div>
-                            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">
-                                Higher Secondary Certificate (H.S.C)
+                            <h3 class="font-display text-lg font-bold text-stone-900 dark:text-white">
+                                Higher Secondary Certificate Examination (H.S.C)
                             </h3>
-                            <p class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1">
+                            <p class="text-sm font-semibold text-amber-700 dark:text-amber-400 mt-1">
                                 Dhaka Imperial College
                             </p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-300 flex flex-wrap gap-x-6 gap-y-1">
-                                <p><span class="font-medium text-slate-800 dark:text-slate-200">Board:</span> Dhaka</p>
-                                <p><span class="font-medium text-slate-800 dark:text-slate-200">Group:</span> Science</p>
+                            <div class="mt-3 pt-3 border-t border-ivory-200 dark:border-obsidian-800 text-sm text-stone-600 dark:text-stone-300 flex flex-wrap gap-x-6 gap-y-1">
+                                <p><span class="font-semibold text-stone-800 dark:text-stone-200">Board:</span> Dhaka</p>
+                                <p><span class="font-semibold text-stone-800 dark:text-stone-200">Group:</span> Science</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- S.S.C Card -->
                     <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 dark:border-slate-950 bg-emerald-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-ivory-50 dark:border-obsidian-950 bg-emerald-700 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                             <i class="fa-solid fa-school text-xs"></i>
                         </div>
-                        <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-obsidian-900 p-6 rounded-2xl border border-ivory-200 dark:border-obsidian-800 shadow-sm hover:border-emerald-500/40 transition-all">
                             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
                                     Passing Year: 2021
                                 </span>
-                                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                                    GPA: 5.00 / 5.00
+                                <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                                    GPA: 5.00 (out of 5.00 scales)
                                 </span>
                             </div>
-                            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">
-                                Secondary School Certificate (S.S.C)
+                            <h3 class="font-display text-lg font-bold text-stone-900 dark:text-white">
+                                Secondary School Certificate Examination (S.S.C)
                             </h3>
-                            <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mt-1">
+                            <p class="text-sm font-semibold text-emerald-700 dark:text-emerald-400 mt-1">
                                 Banani Bidyaniketan School & College
                             </p>
-                            <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-300 flex flex-wrap gap-x-6 gap-y-1">
-                                <p><span class="font-medium text-slate-800 dark:text-slate-200">Board:</span> Dhaka</p>
-                                <p><span class="font-medium text-slate-800 dark:text-slate-200">Group:</span> Science</p>
+                            <div class="mt-3 pt-3 border-t border-ivory-200 dark:border-obsidian-800 text-sm text-stone-600 dark:text-stone-300 flex flex-wrap gap-x-6 gap-y-1">
+                                <p><span class="font-semibold text-stone-800 dark:text-stone-200">Board:</span> Dhaka</p>
+                                <p><span class="font-semibold text-stone-800 dark:text-stone-200">Group:</span> Science</p>
                             </div>
                         </div>
                     </div>
@@ -385,96 +407,96 @@
         </section>
 
         <!-- 4. SKILLS & EXPERTISE SECTION -->
-        <section id="skills" class="py-20 bg-white dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800/70 scroll-mt-16">
+        <section id="skills" class="py-20 bg-ivory-100/70 dark:bg-obsidian-900/60 border-y border-ivory-200 dark:border-obsidian-800 scroll-mt-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mb-12">
-                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Technical Proficiency</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">
+                    <span class="font-mono text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">03 // Technical Stack</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-2">
                         Skills & Expertise
                     </h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2 text-base">
-                        Core programming languages, development environments, and digital strategy tools.
+                    <p class="text-stone-600 dark:text-stone-400 mt-2 text-base">
+                        Languages, platforms, and strategic design & optimization capabilities.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Category 1: Languages & Core Tech -->
-                    <div class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-800 transition-colors">
-                        <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-lg shadow-md shadow-indigo-600/20 mb-5">
+                    <div class="bg-white dark:bg-obsidian-900 rounded-2xl p-6 border border-ivory-200 dark:border-obsidian-800 hover:border-emerald-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center text-lg shadow-md shadow-emerald-900/20 mb-5">
                             <i class="fa-solid fa-code"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-4">
+                        <h3 class="font-display text-lg font-bold text-stone-900 dark:text-white mb-4">
                             Languages & Core Tech
                         </h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-brands fa-python text-blue-500"></i> Python
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-brands fa-python text-emerald-500"></i> Python
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
                                 <i class="fa-brands fa-js text-amber-500"></i> JavaScript
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-brands fa-php text-indigo-500"></i> PHP
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-brands fa-php text-indigo-400"></i> PHP
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-terminal text-slate-500"></i> C / C++
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-solid fa-terminal text-emerald-500"></i> C / C++
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-brands fa-java text-red-500"></i> Java
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-brands fa-java text-amber-500"></i> Java
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
                                 <i class="fa-brands fa-html5 text-orange-500"></i> HTML
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
                                 <i class="fa-brands fa-css3-alt text-sky-500"></i> CSS
                             </span>
                         </div>
                     </div>
 
                     <!-- Category 2: Tools & Platforms -->
-                    <div class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-800 transition-colors">
-                        <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg shadow-md shadow-blue-600/20 mb-5">
+                    <div class="bg-white dark:bg-obsidian-900 rounded-2xl p-6 border border-ivory-200 dark:border-obsidian-800 hover:border-amber-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg shadow-md shadow-amber-900/20 mb-5">
                             <i class="fa-solid fa-screwdriver-wrench"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-4">
+                        <h3 class="font-display text-lg font-bold text-stone-900 dark:text-white mb-4">
                             Tools & Platforms
                         </h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-brands fa-git-alt text-orange-600"></i> Git
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-brands fa-git-alt text-orange-500"></i> Git
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-brands fa-ubuntu text-orange-500"></i> Linux / Ubuntu
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-brands fa-ubuntu text-amber-500"></i> Linux / Ubuntu
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-laptop-code text-blue-500"></i> VS Code
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-solid fa-laptop-code text-emerald-500"></i> VS Code
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
                                 <i class="fa-brands fa-docker text-sky-500"></i> Docker
                             </span>
                         </div>
                     </div>
 
                     <!-- Category 3: Design / Management -->
-                    <div class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-300 dark:hover:border-emerald-800 transition-colors">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-md shadow-emerald-600/20 mb-5">
+                    <div class="bg-white dark:bg-obsidian-900 rounded-2xl p-6 border border-ivory-200 dark:border-obsidian-800 hover:border-emerald-500/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-800 text-amber-300 flex items-center justify-center text-lg shadow-md shadow-emerald-950/20 mb-5">
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
-                        <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white mb-4">
+                        <h3 class="font-display text-lg font-bold text-stone-900 dark:text-white mb-4">
                             Design / Management
                         </h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
                                 <i class="fa-solid fa-magnifying-glass-chart text-emerald-500"></i> SEO
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-pen-nib text-purple-500"></i> UI/UX Design
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-solid fa-pen-nib text-amber-500"></i> UI/UX Design
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-diagram-project text-indigo-500"></i> Project Management
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-solid fa-diagram-project text-emerald-500"></i> Project Management
                             </span>
-                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-1.5">
-                                <i class="fa-solid fa-palette text-pink-500"></i> Graphics Design
+                            <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-ivory-50 dark:bg-obsidian-850 text-stone-700 dark:text-stone-200 border border-ivory-200 dark:border-obsidian-800 flex items-center gap-1.5">
+                                <i class="fa-solid fa-palette text-amber-500"></i> Graphics Design
                             </span>
                         </div>
                     </div>
@@ -486,109 +508,109 @@
         <section id="projects" class="py-20 scroll-mt-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mb-12">
-                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Academic & Practical Works</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">
-                        Featured Projects
+                    <span class="font-mono text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">04 // Engineering Works</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-2">
+                        Course & Academic Projects
                     </h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2 text-base">
-                        Key software, database, compiler, and hardware engineering projects completed across core CSE courses.
+                    <p class="text-stone-600 dark:text-stone-400 mt-2 text-base">
+                        Selected software, database, compiler, and hardware automation systems developed during my CSE coursework.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Project 1: SavePaws -->
-                    <article class="group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-800 transition-all flex flex-col justify-between">
+                    <article class="group bg-white dark:bg-obsidian-900 rounded-2xl p-6 sm:p-7 border border-ivory-200 dark:border-obsidian-800 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between gap-3 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
                                     <i class="fa-solid fa-paw"></i>
                                 </div>
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900">
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
                                     Software Engineering
                                 </span>
                             </div>
-                            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            <h3 class="font-display text-xl font-bold text-stone-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                                 SavePaws
                             </h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
-                                A comprehensive digital platform designed for animal rescue, adoption tracking, and veterinary care coordination. Built following structured software engineering lifecycle methodologies, requirement modeling, and modular architecture.
+                            <p class="text-sm text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
+                                A comprehensive animal welfare and rescue coordination application built using structured software engineering principles, requirement specification, and modular design workflows.
                             </p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                            <span class="font-medium">Course: Software Engineering</span>
-                            <span class="text-indigo-600 dark:text-indigo-400 font-semibold">SDLC & System Design</span>
+                        <div class="mt-6 pt-4 border-t border-ivory-200 dark:border-obsidian-800 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+                            <span class="font-medium">1st Course: Software Engineering</span>
+                            <span class="text-emerald-700 dark:text-emerald-400 font-mono font-semibold">SDLC & Architecture</span>
                         </div>
                     </article>
 
                     <!-- Project 2: Information Collection for Office Management -->
-                    <article class="group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-800 transition-all flex flex-col justify-between">
+                    <article class="group bg-white dark:bg-obsidian-900 rounded-2xl p-6 sm:p-7 border border-ivory-200 dark:border-obsidian-800 shadow-sm hover:shadow-xl hover:border-amber-500/50 transition-all flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between gap-3 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
                                     <i class="fa-solid fa-database"></i>
                                 </div>
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-900">
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
                                     Database Management System
                                 </span>
                             </div>
-                            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            <h3 class="font-display text-xl font-bold text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                                 Information Collection for Office Management
                             </h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
-                                A centralized relational database solution engineered to streamline employee records, departmental workflows, attendance logs, and administrative data reporting with normalized schemas and optimized SQL queries.
+                            <p class="text-sm text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
+                                A structured relational database management system designed to organize employee profiles, departmental records, and administrative reporting with normalized tables and optimized SQL queries.
                             </p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                            <span class="font-medium">Course: Database Management System</span>
-                            <span class="text-blue-600 dark:text-blue-400 font-semibold">SQL & Relational Schema</span>
+                        <div class="mt-6 pt-4 border-t border-ivory-200 dark:border-obsidian-800 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+                            <span class="font-medium">2nd Course: Database Management System</span>
+                            <span class="text-amber-700 dark:text-amber-400 font-mono font-semibold">Relational SQL</span>
                         </div>
                     </article>
 
                     <!-- Project 3: Own Language Compiler System -->
-                    <article class="group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-purple-300 dark:hover:border-purple-800 transition-all flex flex-col justify-between">
+                    <article class="group bg-white dark:bg-obsidian-900 rounded-2xl p-6 sm:p-7 border border-ivory-200 dark:border-obsidian-800 shadow-sm hover:shadow-xl hover:border-emerald-500/50 transition-all flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between gap-3 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
                                     <i class="fa-solid fa-terminal"></i>
                                 </div>
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-100 dark:border-purple-900">
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
                                     Compiler Lab
                                 </span>
                             </div>
-                            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                            <h3 class="font-display text-xl font-bold text-stone-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                                 Own Language Compiler System
                             </h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
-                                A custom-built compiler front-end and translation engine featuring lexical tokenization, syntax parsing, semantic error checking, and symbol table management for a custom-defined programming syntax.
+                            <p class="text-sm text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
+                                A custom programming language compiler implementing lexical analysis, syntax grammar parsing, semantic validation, and symbol table resolution for custom source instructions.
                             </p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                            <span class="font-medium">Course: Compiler Lab</span>
-                            <span class="text-purple-600 dark:text-purple-400 font-semibold">Lexing & Parsing</span>
+                        <div class="mt-6 pt-4 border-t border-ivory-200 dark:border-obsidian-800 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+                            <span class="font-medium">3rd Course: Compiler Lab</span>
+                            <span class="text-emerald-700 dark:text-emerald-400 font-mono font-semibold">Lexing & Parsing</span>
                         </div>
                     </article>
 
-                    <!-- Project 4: Automated Railway Gate System -->
-                    <article class="group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-emerald-300 dark:hover:border-emerald-800 transition-all flex flex-col justify-between">
+                    <!-- Project 4: Automated Railway Gate System by Using Arduino -->
+                    <article class="group bg-white dark:bg-obsidian-900 rounded-2xl p-6 sm:p-7 border border-ivory-200 dark:border-obsidian-800 shadow-sm hover:shadow-xl hover:border-amber-500/50 transition-all flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between gap-3 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
                                     <i class="fa-solid fa-microchip"></i>
                                 </div>
-                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-900">
-                                    Microprocessor & Microcontroller
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
+                                    Microprocessor & Assembly
                                 </span>
                             </div>
-                            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            <h3 class="font-display text-xl font-bold text-stone-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                                 Automated Railway Gate System by Using Arduino
                             </h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed">
-                                An embedded hardware safety system utilizing Arduino microcontrollers, proximity/IR sensors, and servo actuators to automatically detect approaching trains and operate level-crossing barriers to prevent accidents.
+                            <p class="text-sm text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
+                                An automated level-crossing safety controller built with Arduino microcontrollers, IR sensors, and servo motors to detect approaching trains and control gate barriers in real time.
                             </p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                            <span class="font-medium">Course: Microprocessor & Assembly Language</span>
-                            <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Arduino & Embedded</span>
+                        <div class="mt-6 pt-4 border-t border-ivory-200 dark:border-obsidian-800 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+                            <span class="font-medium">4th Course: Microprocessor & Assembly Language</span>
+                            <span class="text-amber-700 dark:text-amber-400 font-mono font-semibold">Arduino & Hardware</span>
                         </div>
                     </article>
                 </div>
@@ -596,15 +618,15 @@
         </section>
 
         <!-- 6. CONTACT & SOCIAL MEDIA SECTION -->
-        <section id="contact" class="py-20 bg-white dark:bg-slate-900/60 border-t border-slate-200/70 dark:border-slate-800/70 scroll-mt-16">
+        <section id="contact" class="py-20 bg-ivory-100/70 dark:bg-obsidian-900/60 border-t border-ivory-200 dark:border-obsidian-800 scroll-mt-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mb-12">
-                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Get In Touch</span>
-                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-2">
+                    <span class="font-mono text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">05 // Connect & Communicate</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-stone-900 dark:text-white mt-2">
                         Contact & Social Profiles
                     </h2>
-                    <p class="text-slate-600 dark:text-slate-400 mt-2 text-base">
-                        Reach out directly via phone, email, or connect with me across any of my social platforms.
+                    <p class="text-stone-600 dark:text-stone-400 mt-2 text-base">
+                        Reach out directly via phone, email, or connect on any of my official social media channels.
                     </p>
                 </div>
 
@@ -613,82 +635,82 @@
                     <div class="lg:col-span-6 space-y-6">
                         <!-- Direct Contact Cards -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <a href="tel:+8801773317154" class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-700 transition-all group">
-                                <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                            <a href="tel:+8801773317154" class="p-5 rounded-2xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 hover:border-emerald-500/50 transition-all group">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
-                                <p class="text-xs font-medium text-slate-500 dark:text-slate-400">Phone Number</p>
-                                <p class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">01773317154</p>
+                                <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Phone Number</p>
+                                <p class="text-sm font-mono font-bold text-stone-900 dark:text-white mt-0.5">01773317154</p>
                             </a>
 
-                            <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-700 transition-all">
+                            <div class="p-5 rounded-2xl bg-white dark:bg-obsidian-900 border border-ivory-200 dark:border-obsidian-800 hover:border-emerald-500/50 transition-all">
                                 <div class="flex items-center justify-between mb-3">
-                                    <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-400 flex items-center justify-center">
                                         <i class="fa-solid fa-envelope"></i>
                                     </div>
-                                    <button id="copy-email-btn" type="button" title="Copy Email Address" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                                    <button id="copy-email-btn" type="button" title="Copy Email Address" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-ivory-50 dark:bg-obsidian-850 text-stone-600 dark:text-stone-300 border border-ivory-200 dark:border-obsidian-800 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                                         <i class="fa-regular fa-copy mr-1"></i>Copy
                                     </button>
                                 </div>
-                                <p class="text-xs font-medium text-slate-500 dark:text-slate-400">Email Address</p>
-                                <a href="mailto:shamiurhasan100@gmail.com" class="block text-sm font-bold text-slate-900 dark:text-white mt-0.5 truncate hover:text-indigo-600 dark:hover:text-indigo-400">
+                                <p class="text-xs font-medium text-stone-500 dark:text-stone-400">Email Address</p>
+                                <a href="mailto:shamiurhasan100@gmail.com" class="block text-sm font-bold text-stone-900 dark:text-white mt-0.5 truncate hover:text-emerald-600 dark:hover:text-emerald-400">
                                     shamiurhasan100@gmail.com
                                 </a>
                             </div>
                         </div>
 
                         <!-- Social Media Profiles Grid (All 8 Requested Links with Official Logos) -->
-                        <div class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800">
-                            <h3 class="font-display text-base font-bold text-slate-900 dark:text-white mb-4">
-                                Connect on Social Media
+                        <div class="bg-white dark:bg-obsidian-900 rounded-2xl p-6 border border-ivory-200 dark:border-obsidian-800">
+                            <h3 class="font-display text-base font-bold text-stone-900 dark:text-white mb-4">
+                                Official Social Media Profiles
                             </h3>
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 <!-- 1. Facebook -->
-                                <a href="https://www.facebook.com/shamiurhasan100?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-blue-500 hover:shadow-md transition-all group">
+                                <a href="https://www.facebook.com/shamiurhasan100?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-[#1877F2] hover:shadow-md transition-all group">
                                     <i class="fa-brands fa-facebook text-2xl text-[#1877F2] group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">Facebook</span>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">Facebook</span>
                                 </a>
 
                                 <!-- 2. Instagram -->
-                                <a href="https://www.instagram.com/shamiurhasan100?igsh=MWQwdWxoMTBxcGljbg==" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-pink-500 hover:shadow-md transition-all group">
+                                <a href="https://www.instagram.com/shamiurhasan100?igsh=MWQwdWxoMTBxcGljbg==" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-[#E4405F] hover:shadow-md transition-all group">
                                     <i class="fa-brands fa-instagram text-2xl text-[#E4405F] group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">Instagram</span>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">Instagram</span>
                                 </a>
 
                                 <!-- 3. WhatsApp -->
-                                <a href="https://wa.me/qr/MRRL7UCTYDXNE1" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-emerald-500 hover:shadow-md transition-all group">
+                                <a href="https://wa.me/qr/MRRL7UCTYDXNE1" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-[#25D366] hover:shadow-md transition-all group">
                                     <i class="fa-brands fa-whatsapp text-2xl text-[#25D366] group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">WhatsApp</span>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">WhatsApp</span>
                                 </a>
 
                                 <!-- 4. Telegram -->
-                                <a href="http://t.me/shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-sky-500 hover:shadow-md transition-all group">
+                                <a href="http://t.me/shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-[#26A5E4] hover:shadow-md transition-all group">
                                     <i class="fa-brands fa-telegram text-2xl text-[#26A5E4] group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">Telegram</span>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">Telegram</span>
                                 </a>
 
                                 <!-- 5. GitHub -->
-                                <a href="https://github.com/shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-500 hover:shadow-md transition-all group">
-                                    <i class="fa-brands fa-github text-2xl text-slate-900 dark:text-white group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">GitHub</span>
+                                <a href="https://github.com/shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-emerald-500 hover:shadow-md transition-all group">
+                                    <i class="fa-brands fa-github text-2xl text-stone-900 dark:text-white group-hover:scale-110 transition-transform"></i>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">GitHub</span>
                                 </a>
 
                                 <!-- 6. Threads -->
-                                <a href="https://www.threads.net/@shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-500 hover:shadow-md transition-all group">
-                                    <i class="fa-brands fa-threads text-2xl text-slate-900 dark:text-white group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">Threads</span>
+                                <a href="https://www.threads.net/@shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-emerald-500 hover:shadow-md transition-all group">
+                                    <i class="fa-brands fa-threads text-2xl text-stone-900 dark:text-white group-hover:scale-110 transition-transform"></i>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">Threads</span>
                                 </a>
 
                                 <!-- 7. LinkedIn -->
-                                <a href="https://www.linkedin.com/in/shamiurhasan100/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-blue-600 hover:shadow-md transition-all group">
+                                <a href="https://www.linkedin.com/in/shamiurhasan100/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-[#0A66C2] hover:shadow-md transition-all group">
                                     <i class="fa-brands fa-linkedin text-2xl text-[#0A66C2] group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">LinkedIn</span>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">LinkedIn</span>
                                 </a>
 
                                 <!-- 8. YouTube -->
-                                <a href="https://www.youtube.com/@shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 hover:border-red-600 hover:shadow-md transition-all group">
+                                <a href="https://www.youtube.com/@shamiurhasan100" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-3.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 hover:border-[#FF0000] hover:shadow-md transition-all group">
                                     <i class="fa-brands fa-youtube text-2xl text-[#FF0000] group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 mt-2">YouTube</span>
+                                    <span class="text-xs font-semibold text-stone-700 dark:text-stone-200 mt-2">YouTube</span>
                                 </a>
                             </div>
                         </div>
@@ -696,29 +718,29 @@
 
                     <!-- Direct Message Form -->
                     <div class="lg:col-span-6">
-                        <form id="contact-form" class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 space-y-4">
-                            <h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">
+                        <form id="contact-form" class="bg-white dark:bg-obsidian-900 rounded-2xl p-6 sm:p-8 border border-ivory-200 dark:border-obsidian-800 space-y-4">
+                            <h3 class="font-display text-lg font-bold text-stone-900 dark:text-white">
                                 Send a Direct Message
                             </h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label for="sender-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Your Name</label>
-                                    <input type="text" id="sender-name" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <label for="sender-name" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1.5">Your Name</label>
+                                    <input type="text" id="sender-name" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 text-sm text-stone-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
                                 </div>
                                 <div>
-                                    <label for="sender-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Your Email</label>
-                                    <input type="email" id="sender-email" required placeholder="john@example.com" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <label for="sender-email" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1.5">Your Email</label>
+                                    <input type="email" id="sender-email" required placeholder="john@example.com" class="w-full px-4 py-2.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 text-sm text-stone-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
                                 </div>
                             </div>
                             <div>
-                                <label for="sender-subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Subject</label>
-                                <input type="text" id="sender-subject" required placeholder="SEO Consultation / AI-ML Project Inquiry" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <label for="sender-subject" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1.5">Subject</label>
+                                <input type="text" id="sender-subject" required placeholder="SEO Consultation / AI-ML Engineering Inquiry" class="w-full px-4 py-2.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 text-sm text-stone-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
                             </div>
                             <div>
-                                <label for="sender-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Message</label>
-                                <textarea id="sender-message" rows="4" required placeholder="Write your message here..." class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"></textarea>
+                                <label for="sender-message" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1.5">Message</label>
+                                <textarea id="sender-message" rows="4" required placeholder="Write your message here..." class="w-full px-4 py-2.5 rounded-xl bg-ivory-50 dark:bg-obsidian-850 border border-ivory-200 dark:border-obsidian-800 text-sm text-stone-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-lg shadow-indigo-600/20 transition-all flex items-center justify-center gap-2">
+                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-sm shadow-lg shadow-emerald-900/20 transition-all flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-paper-plane"></i>
                                 Send Message
                             </button>
@@ -730,14 +752,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-900">
+    <footer class="bg-obsidian-950 text-stone-400 py-8 border-t border-obsidian-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2.5">
                 <span class="font-display font-bold text-white">Shamiur Hasan</span>
-                <span class="text-slate-600">|</span>
-                <span class="text-xs">SEO Specialist & AI/ML Engineering</span>
+                <span class="text-amber-500">|</span>
+                <span class="text-xs text-emerald-400">SEO Specialist & AI/ML Engineering</span>
             </div>
-            <p class="text-xs text-slate-500">
+            <p class="text-xs text-stone-500">
                 &copy; <span id="current-year"></span> Shamiur Hasan. All rights reserved.
             </p>
         </div>
@@ -759,7 +781,7 @@
                 toastMsg.textContent = message;
                 toastIcon.className = isSuccess
                     ? 'fa-solid fa-circle-check text-emerald-400 text-lg'
-                    : 'fa-solid fa-circle-info text-indigo-400 text-lg';
+                    : 'fa-solid fa-circle-info text-amber-400 text-lg';
 
                 toast.classList.remove('translate-y-24', 'opacity-0');
                 clearTimeout(toastTimeout);
@@ -768,33 +790,32 @@
                 }, 3500);
             }
 
-            // Dark / Light Mode Toggle
+            // Executive Theme Toggle (Default: Obsidian Dark Mode <-> Warm Ivory Light Mode)
             const htmlEl = document.documentElement;
             const themeToggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
+            const themeLabel = document.getElementById('theme-label');
 
             function applyTheme(theme) {
                 if (theme === 'dark') {
                     htmlEl.classList.add('dark');
-                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                    themeIcon.className = 'fa-solid fa-sun text-amber-400';
+                    if (themeLabel) themeLabel.textContent = 'Ivory';
                 } else {
                     htmlEl.classList.remove('dark');
-                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                    themeIcon.className = 'fa-solid fa-moon text-emerald-700';
+                    if (themeLabel) themeLabel.textContent = 'Obsidian';
                 }
             }
 
-            const savedTheme = localStorage.getItem('shamiur_portfolio_theme');
-            if (savedTheme) {
-                applyTheme(savedTheme);
-            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                applyTheme('dark');
-            }
+            const savedTheme = localStorage.getItem('shamiur_exec_theme') || 'dark';
+            applyTheme(savedTheme);
 
             themeToggleBtn.addEventListener('click', () => {
                 const isDark = htmlEl.classList.contains('dark');
                 const nextTheme = isDark ? 'light' : 'dark';
                 applyTheme(nextTheme);
-                localStorage.setItem('shamiur_portfolio_theme', nextTheme);
+                localStorage.setItem('shamiur_exec_theme', nextTheme);
             });
 
             // Mobile Menu Toggle
@@ -835,18 +856,18 @@
                 navLinks.forEach(link => {
                     const target = link.getAttribute('data-nav');
                     if (target === currentSectionId) {
-                        link.className = 'nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 transition-colors';
+                        link.className = 'nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/15 transition-colors';
                     } else {
-                        link.className = 'nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors';
+                        link.className = 'nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-emerald-700 dark:hover:text-emerald-400 hover:bg-ivory-100 dark:hover:bg-obsidian-900 transition-colors';
                     }
                 });
 
                 mobileNavLinks.forEach(link => {
                     const target = link.getAttribute('data-nav');
                     if (target === currentSectionId) {
-                        link.className = 'mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60';
+                        link.className = 'mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-500/10';
                     } else {
-                        link.className = 'mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900';
+                        link.className = 'mobile-nav-link block px-3.5 py-2.5 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-300 hover:bg-ivory-100 dark:hover:bg-obsidian-900';
                     }
                 });
             }
@@ -854,7 +875,7 @@
             window.addEventListener('scroll', updateActiveNav, { passive: true });
             updateActiveNav();
 
-            // Copy Email to Clipboard (using textarea fallback for iFrame compatibility)
+            // Copy Email to Clipboard
             const copyEmailBtn = document.getElementById('copy-email-btn');
             copyEmailBtn.addEventListener('click', () => {
                 const emailText = 'shamiurhasan100@gmail.com';
@@ -870,20 +891,6 @@
                 }
                 document.body.removeChild(tempInput);
             });
-
-            // Instant Local Photo Preview Handler
-            const photoUploadInput = document.getElementById('profile-photo-upload');
-            const profilePhotoImg = document.getElementById('profile-photo-img');
-            if (photoUploadInput && profilePhotoImg) {
-                photoUploadInput.addEventListener('change', (e) => {
-                    const file = e.target.files && e.target.files[0];
-                    if (file) {
-                        const objectUrl = URL.createObjectURL(file);
-                        profilePhotoImg.src = objectUrl;
-                        showToast('Profile photo updated for live preview!');
-                    }
-                });
-            }
 
             // Contact Form Submission Handler
             const contactForm = document.getElementById('contact-form');
